@@ -241,6 +241,11 @@ fn main_exec() -> Result<(), MainError> {
                     .help("Print the binary version number."),
             )
             .arg(
+                Argument::new("joke")
+                    .takes_value(false)
+                    .help("Print a joke."),
+            )
+            .arg(
                 Argument::new("snapshot-version")
                     .takes_value(false)
                     .help("Print the supported data format version."),
@@ -273,6 +278,11 @@ fn main_exec() -> Result<(), MainError> {
 
     if arguments.flag_present("version") {
         println!("Firecracker v{}\n", FIRECRACKER_VERSION);
+        return Ok(());
+    }
+
+    if arguments.flag_present("joke") {
+        println!("Why do virtual machines never get lost? Because they always follow hyper-visor paths!");
         return Ok(());
     }
 
